@@ -1,4 +1,5 @@
 import 'package:fitness01/common_widget/on_boarding_page.dart';
+import 'package:fitness01/view/login/singup_view.dart';
 import 'package:flutter/material.dart';
 
 import '../../common/color_extension.dart';
@@ -103,10 +104,21 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                         onPressed: () {
                           if (selectpage < 3) {
                             selectpage = selectpage + 1;
-                            controller.jumpToPage(selectpage);
+                            controller.animateToPage(
+                              selectpage,
+                              duration: const Duration(milliseconds: 600),
+                              curve: Curves.bounceInOut,
+                            );
+                            //controller.jumpToPage(selectpage);
                           } else {
                             // open welcome screen
                             print("Open Welcome Screen");
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const SingupView(),
+                              ),
+                            );
                           }
                         },
                       ),
