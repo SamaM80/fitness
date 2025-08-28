@@ -1,6 +1,7 @@
 import 'package:fitness01/common/color_extension.dart';
 import 'package:fitness01/common_widget/round_button.dart';
 import 'package:fitness01/common_widget/round_textfield.dart';
+import 'package:fitness01/view/login/complete_profil.dart';
 import 'package:flutter/material.dart';
 
 class SingupView extends StatefulWidget {
@@ -98,7 +99,17 @@ class _SingupViewState extends State<SingupView> {
                   ],
                 ),
                 SizedBox(height: media.width * 0.3),
-                RoundButton(title: "Register", onPressed: () {}),
+                RoundButton(
+                  title: "Register",
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CompleteProfilView(),
+                      ),
+                    );
+                  },
+                ),
                 SizedBox(height: media.width * 0.04),
                 Row(
                   children: [

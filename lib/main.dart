@@ -1,7 +1,7 @@
 import 'package:fitness01/common/color_extension.dart';
 import 'package:fitness01/view/login/singup_view.dart';
-//import 'package:fitness01/view/on_boarding/on_boarding_view.dart';
-//import 'package:fitness01/view/on_boarding/started_view.dart';
+import 'package:fitness01/view/on_boarding/on_boarding_view.dart';
+import 'package:fitness01/view/on_boarding/started_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Tcolor.primaryColor1,
         fontFamily: "Poppins",
       ),
-      home: const SingupView(),
+      home: const StartedView(),
     );
   }
 }
