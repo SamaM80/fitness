@@ -2,6 +2,9 @@ import 'package:fitness01/common/color_extension.dart';
 import 'package:fitness01/common_widget/round_textfield.dart';
 import 'package:flutter/material.dart';
 
+import '../../common_widget/round_button.dart';
+import 'what_your_goal_view.dart';
+
 class CompleteProfilView extends StatefulWidget {
   const CompleteProfilView({super.key});
 
@@ -10,6 +13,7 @@ class CompleteProfilView extends StatefulWidget {
 }
 
 class _CompleteProfilViewState extends State<CompleteProfilView> {
+  TextEditingController textData = TextEditingController();
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
@@ -26,7 +30,7 @@ class _CompleteProfilViewState extends State<CompleteProfilView> {
                   width: media.width,
                   fit: BoxFit.fitWidth,
                 ),
-
+                SizedBox(height: media.width * 0.05),
                 Text(
                   "Let's complete your profile",
                   style: TextStyle(
@@ -44,26 +48,142 @@ class _CompleteProfilViewState extends State<CompleteProfilView> {
                   padding: const EdgeInsets.symmetric(horizontal: 15.0),
                   child: Column(
                     children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Tcolor.lightGray,
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Row(
+                          children: [
+                            Container(
+                              alignment: Alignment.center,
+                              width: 50,
+                              height: 50,
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 15,
+                              ),
+                              child: Image.asset(
+                                "assets/img/gender.png",
+                                width: 20,
+                                height: 20,
+                                fit: BoxFit.contain,
+                                color: Tcolor.gray,
+                              ),
+                            ),
+                            Expanded(
+                              child: DropdownButtonHideUnderline(
+                                child: DropdownButton(
+                                  items: ["Male", "Female"]
+                                      .map(
+                                        (name) => DropdownMenuItem(
+                                          value: name,
+                                          child: Text(
+                                            name,
+                                            style: TextStyle(
+                                              color: Tcolor.gray,
+                                              fontSize: 14,
+                                            ),
+                                          ),
+                                        ),
+                                      )
+                                      .toList(),
+                                  onChanged: (value) {},
+                                  isExpanded: true,
+                                  hint: Text(
+                                    "Choose Gender",
+                                    style: TextStyle(
+                                      color: Tcolor.gray,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 8),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: media.width * 0.04),
                       RoundTextField(
-                        hintText: "Password",
+                        controller: textData,
+                        hintText: "Date of Birth",
                         icon: "assets/img/date.png",
-                        keyboardType: TextInputType.emailAddress,
-                        obscureText: true,
-                        rightIcon: TextButton(
-                          onPressed: () {},
-                          child: Container(
-                            alignment: Alignment.center,
-                            width: 20,
-                            height: 20,
-                            child: Image.asset(
-                              "assets/img/show_password.png",
-                              width: 20,
-                              height: 20,
-                              fit: BoxFit.contain,
-                              color: Tcolor.gray,
+                      ),
+                      SizedBox(height: media.width * 0.04),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: RoundTextField(
+                              controller: textData,
+                              hintText: "Your Weight",
+                              icon: "assets/img/weight.png",
                             ),
                           ),
-                        ),
+                          const SizedBox(width: 8),
+                          Container(
+                            height: 50,
+                            width: 50,
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: Tcolor.secondaryG,
+                              ),
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            alignment: Alignment
+                                .center, // Ensures the text is centered
+                            child: Text(
+                              "KG",
+                              style: TextStyle(
+                                color: Tcolor.white,
+                                fontSize: 12,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: media.width * 0.04),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: RoundTextField(
+                              controller: textData,
+                              hintText: "Your Height",
+                              icon: "assets/img/hight.png",
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          Container(
+                            height: 50,
+                            width: 50,
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: Tcolor.secondaryG,
+                              ),
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            alignment: Alignment
+                                .center, // Ensures the text is centered
+                            child: Text(
+                              "CM",
+                              style: TextStyle(
+                                color: Tcolor.white,
+                                fontSize: 12,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: media.width * 0.15),
+                      RoundButton(
+                        title: "Next >",
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => WhatYourGoalView(),
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),
