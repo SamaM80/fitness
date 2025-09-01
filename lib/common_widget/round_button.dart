@@ -65,7 +65,7 @@ class RoundButton extends StatelessWidget {
                       begin: Alignment.centerLeft,
                       end: Alignment.centerRight,
                     ).createShader(
-                      Rect.fromLTWH(0, 0, bounds.width, bounds.height),
+                      Rect.fromLTRB(0, 0, bounds.width, bounds.height),
                     );
                   },
                   child: Text(

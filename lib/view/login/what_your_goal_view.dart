@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../common/color_extension.dart';
+import '../../common_widget/round_button.dart';
 
 class WhatYourGoalView extends StatefulWidget {
   const WhatYourGoalView({super.key});
@@ -17,7 +18,8 @@ class _WhatYourGoalViewState extends State<WhatYourGoalView> {
       body: SafeArea(
         child: Stack(
           children: [
-            SizedBox(
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
               width: media.width,
               child: Column(
                 children: [
@@ -36,6 +38,17 @@ class _WhatYourGoalViewState extends State<WhatYourGoalView> {
                   ),
                   const Spacer(),
                   SizedBox(height: media.width * 0.05),
+                  RoundButton(
+                    title: "Confirm",
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => WhatYourGoalView(),
+                        ),
+                      );
+                    },
+                  ),
                 ],
               ),
             ),
