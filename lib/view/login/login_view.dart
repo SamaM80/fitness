@@ -2,17 +2,17 @@ import 'package:fitness01/common/color_extension.dart';
 import 'package:fitness01/common_widget/round_button.dart';
 import 'package:fitness01/common_widget/round_textfield.dart';
 import 'package:fitness01/view/login/complete_profil.dart';
-import 'package:fitness01/view/login/login_view.dart';
+import 'package:fitness01/view/login/singup_view.dart';
 import 'package:flutter/material.dart';
 
-class SingupView extends StatefulWidget {
-  const SingupView({super.key});
+class LoginView extends StatefulWidget {
+  const LoginView({super.key});
 
   @override
-  State<SingupView> createState() => _SingupViewState();
+  State<LoginView> createState() => _SingupViewState();
 }
 
-class _SingupViewState extends State<SingupView> {
+class _SingupViewState extends State<LoginView> {
   bool isCheck = false;
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,8 @@ class _SingupViewState extends State<SingupView> {
       backgroundColor: Tcolor.white,
       body: SingleChildScrollView(
         child: SafeArea(
-          child: Padding(
+          child: Container(
+            height: media.height,
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -32,22 +33,12 @@ class _SingupViewState extends State<SingupView> {
                   style: TextStyle(color: Tcolor.gray, fontSize: 16),
                 ),
                 Text(
-                  "Create an Acount",
+                  "Welcome Back",
                   style: TextStyle(
                     color: Tcolor.black,
                     fontSize: 20,
                     fontWeight: FontWeight.w700,
                   ),
-                ),
-                SizedBox(height: media.width * 0.05),
-                const RoundTextField(
-                  hintText: "First Name",
-                  icon: "assets/img/user_text.png",
-                ),
-                SizedBox(height: media.width * 0.04),
-                const RoundTextField(
-                  hintText: "Last Name",
-                  icon: "assets/img/user_text.png",
                 ),
                 SizedBox(height: media.width * 0.04),
                 const RoundTextField(
@@ -78,30 +69,24 @@ class _SingupViewState extends State<SingupView> {
                   ),
                 ),
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        isCheck
-                            ? Icons.check_box_outlined
-                            : Icons.check_box_outline_blank_outlined,
-                        color: Tcolor.gray,
-                      ),
-                    ),
                     Padding(
                       padding: const EdgeInsets.only(top: 8),
-
                       child: Text(
-                        "By continuing you accept our Privacy Policy and\nTerm of Use",
-                        style: TextStyle(color: Tcolor.gray, fontSize: 10),
+                        "Forgot your Password?",
+                        style: TextStyle(
+                          color: Tcolor.gray,
+                          fontSize: 11,
+                          decoration: TextDecoration.underline,
+                        ),
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: media.width * 0.28),
+                SizedBox(height: media.width * 0.7),
                 RoundButton(
-                  title: "Register",
+                  title: "Login",
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -186,20 +171,17 @@ class _SingupViewState extends State<SingupView> {
                 SizedBox(height: media.width * 0.04),
                 TextButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => LoginView()),
-                    );
+                    Navigator.pop(context);
                   },
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
-                        "Already have an account?",
+                        "Don't have an account?",
                         style: TextStyle(color: Tcolor.black, fontSize: 14),
                       ),
                       Text(
-                        " Login",
+                        " Register",
                         style: TextStyle(
                           color: Tcolor.black,
                           fontSize: 14,
