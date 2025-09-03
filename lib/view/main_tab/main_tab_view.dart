@@ -1,3 +1,5 @@
+import 'package:fitness01/common/color_extension.dart';
+import 'package:fitness01/common_widget/tab_button.dart';
 import 'package:flutter/material.dart';
 
 class MainTabView extends StatefulWidget {
@@ -8,8 +10,83 @@ class MainTabView extends StatefulWidget {
 }
 
 class _MainTabViewState extends State<MainTabView> {
+  int selectTab = 0;
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      backgroundColor: Tcolor.white,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: SizedBox(
+        width: 70,
+        height: 70,
+        child: InkWell(
+          onTap: () {},
+          child: Container(
+            width: 65,
+            height: 65,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(colors: Tcolor.primaryG),
+              borderRadius: BorderRadius.circular(35),
+            ),
+            child: Icon(Icons.search, color: Tcolor.white, size: 30),
+          ),
+        ),
+      ),
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          color: Tcolor.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withAlpha(30),
+              blurRadius: 10,
+              offset: Offset(0, -2),
+            ),
+          ],
+        ),
+        child: SafeArea(
+          child: SizedBox(
+            height: kToolbarHeight,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                TabButton(
+                  icon: "assets/img/home_tab.png",
+                  selectIcon: "assets/img/home_tab_select.png",
+                  isActive: selectTab == 0,
+                  onTap: () {
+                    setState(() => selectTab = 0);
+                  },
+                ),
+                TabButton(
+                  icon: "assets/img/activity_tab.png",
+                  selectIcon: "assets/img/activity_tab_select.png",
+                  isActive: selectTab == 1,
+                  onTap: () {
+                    setState(() => selectTab = 1);
+                  },
+                ),
+                const SizedBox(width: 40),
+                TabButton(
+                  icon: "assets/img/camera_tab.png",
+                  selectIcon: "assets/img/camera_tab_select.png",
+                  isActive: selectTab == 2,
+                  onTap: () {
+                    setState(() => selectTab = 2);
+                  },
+                ),
+                TabButton(
+                  icon: "assets/img/profile_tab.png",
+                  selectIcon: "assets/img/profile_tab_select.png",
+                  isActive: selectTab == 3,
+                  onTap: () {
+                    setState(() => selectTab = 3);
+                  },
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

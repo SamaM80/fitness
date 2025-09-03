@@ -106,13 +106,13 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                             selectpage = selectpage + 1;
                             controller.animateToPage(
                               selectpage,
-                              duration: const Duration(milliseconds: 600),
-                              curve: Curves.bounceInOut,
+                              duration: const Duration(
+                                milliseconds: 400,
+                              ), // Adjusted duration for smoother animation
+                              curve: Curves
+                                  .easeInOut, // Changed to a smoother curve
                             );
-                            //controller.jumpToPage(selectpage);
                           } else {
-                            // open welcome screen
-                            print("Open Welcome Screen");
                             Navigator.push(
                               context,
                               MaterialPageRoute(
