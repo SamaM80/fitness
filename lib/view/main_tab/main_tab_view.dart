@@ -1,5 +1,7 @@
 import 'package:fitness01/common/color_extension.dart';
 import 'package:fitness01/common_widget/tab_button.dart';
+import 'package:fitness01/view/home/blank_view.dart';
+import 'package:fitness01/view/home/home_view.dart';
 import 'package:flutter/material.dart';
 
 class MainTabView extends StatefulWidget {
@@ -11,10 +13,13 @@ class MainTabView extends StatefulWidget {
 
 class _MainTabViewState extends State<MainTabView> {
   int selectTab = 0;
+  final PageStorageBucket pageBucket = PageStorageBucket();
+  Widget curentTab = const HomeView();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Tcolor.white,
+      body: PageStorage(bucket: pageBucket, child: curentTab),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: SizedBox(
         width: 70,
@@ -54,7 +59,11 @@ class _MainTabViewState extends State<MainTabView> {
                   selectIcon: "assets/img/home_tab_select.png",
                   isActive: selectTab == 0,
                   onTap: () {
-                    setState(() => selectTab = 0);
+                    selectTab = 0;
+                    curentTab = const HomeView();
+                    if (mounted) {
+                      setState(() {});
+                    }
                   },
                 ),
                 TabButton(
@@ -62,7 +71,11 @@ class _MainTabViewState extends State<MainTabView> {
                   selectIcon: "assets/img/activity_tab_select.png",
                   isActive: selectTab == 1,
                   onTap: () {
-                    setState(() => selectTab = 1);
+                    selectTab = 1;
+                    curentTab = const BlankView();
+                    if (mounted) {
+                      setState(() {});
+                    }
                   },
                 ),
                 const SizedBox(width: 40),
@@ -71,7 +84,11 @@ class _MainTabViewState extends State<MainTabView> {
                   selectIcon: "assets/img/camera_tab_select.png",
                   isActive: selectTab == 2,
                   onTap: () {
-                    setState(() => selectTab = 2);
+                    selectTab = 2;
+                    curentTab = const BlankView();
+                    if (mounted) {
+                      setState(() {});
+                    }
                   },
                 ),
                 TabButton(
@@ -79,7 +96,11 @@ class _MainTabViewState extends State<MainTabView> {
                   selectIcon: "assets/img/profile_tab_select.png",
                   isActive: selectTab == 3,
                   onTap: () {
-                    setState(() => selectTab = 3);
+                    selectTab = 3;
+                    curentTab = const BlankView();
+                    if (mounted) {
+                      setState(() {});
+                    }
                   },
                 ),
               ],
