@@ -7,10 +7,14 @@ class RoundButton extends StatelessWidget {
   final String title;
   final RoundButtonType type;
   final VoidCallback onPressed;
+  final double fontsize;
+  final FontWeight fontWeight;
   const RoundButton({
     super.key,
     required this.title,
     this.type = RoundButtonType.bgGradient,
+    this.fontsize = 16,
+    this.fontWeight = FontWeight.w700,
     required this.onPressed,
   });
 
@@ -22,8 +26,6 @@ class RoundButton extends StatelessWidget {
           colors: type == RoundButtonType.bgSGradient
               ? Tcolor.secondaryG
               : Tcolor.primaryG,
-          begin: Alignment.centerLeft,
-          end: Alignment.centerRight,
         ),
         borderRadius: BorderRadius.circular(25),
         boxShadow:
@@ -49,7 +51,9 @@ class RoundButton extends StatelessWidget {
                 type == RoundButtonType.bgSGradient
             ? 0
             : 1,
-        color: type == RoundButtonType.bgGradient
+        color:
+            type == RoundButtonType.bgGradient ||
+                type == RoundButtonType.bgSGradient
             ? Colors.transparent
             : Tcolor.white,
         child:
@@ -60,7 +64,7 @@ class RoundButton extends StatelessWidget {
                 style: TextStyle(
                   color: Tcolor.white,
                   fontSize: 16,
-                  fontWeight: FontWeight.w700,
+                  fontWeight: fontWeight,
                 ),
               )
             : ShaderMask(
@@ -78,8 +82,8 @@ class RoundButton extends StatelessWidget {
                   title,
                   style: TextStyle(
                     color: Tcolor.primaryColor1,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
+                    fontSize: fontsize,
+                    fontWeight: fontWeight,
                   ),
                 ),
               ),
