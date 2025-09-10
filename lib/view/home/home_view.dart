@@ -62,15 +62,13 @@ class _HomeViewState extends State<HomeView> {
             colors: [
               Tcolor.primaryColor2.withAlpha(100),
               Tcolor.primaryColor1.withAlpha(40),
-              Tcolor.primaryColor1.withAlpha(40),
             ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
           ),
         ),
         dotData: FlDotData(show: false),
-        gradient: LinearGradient(
-          colors: Tcolor.primaryG,
-          stops: const [0.1, 0.4],
-        ),
+        gradient: LinearGradient(colors: Tcolor.primaryG),
       ),
     ];
     return Scaffold(
@@ -256,8 +254,8 @@ class _HomeViewState extends State<HomeView> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.symmetric(
-                            vertical: 25,
-                            horizontal: 25,
+                            vertical: 20,
+                            horizontal: 20,
                           ),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -292,8 +290,8 @@ class _HomeViewState extends State<HomeView> {
                                   "78 BPM",
                                   style: TextStyle(
                                     color: Tcolor.white.withAlpha(125),
-                                    fontSize: 16,
                                     fontWeight: FontWeight.w700,
+                                    fontSize: 18,
                                   ),
                                 ),
                               ),
@@ -332,16 +330,9 @@ class _HomeViewState extends State<HomeView> {
                                           .lineBarSpots!
                                           .first
                                           .spotIndex;
+                                      showingTooltipOnSpots.clear();
                                       setState(() {
-                                        if (showingTooltipOnSpots.contains(
-                                          spotIndex,
-                                        )) {
-                                          showingTooltipOnSpots.remove(
-                                            spotIndex,
-                                          );
-                                        } else {
-                                          showingTooltipOnSpots.add(spotIndex);
-                                        }
+                                        showingTooltipOnSpots.add(spotIndex);
                                       });
                                     }
                                   },
@@ -387,9 +378,10 @@ class _HomeViewState extends State<HomeView> {
                                     (List<LineBarSpot> lineBarsSpot) {
                                       return lineBarsSpot.map((lineBarSpot) {
                                         return LineTooltipItem(
-                                          lineBarSpot.y.toString(),
+                                          "${lineBarSpot.x.toInt()} mins ago",
                                           const TextStyle(
                                             color: Colors.white,
+                                            fontSize: 10,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         );
@@ -399,6 +391,7 @@ class _HomeViewState extends State<HomeView> {
                             ),
                             lineBarsData: lineBarsData,
                             minY: 0,
+                            maxY: 130,
                             titlesData: FlTitlesData(show: false),
                             gridData: const FlGridData(show: false),
                             borderData: FlBorderData(
