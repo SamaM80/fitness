@@ -2,6 +2,7 @@ import 'package:fitness01/common/color_extension.dart';
 import 'package:fitness01/common_widget/round_button.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:simple_animation_progress_bar/simple_animation_progress_bar.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -404,6 +405,76 @@ class _HomeViewState extends State<HomeView> {
                     ),
                   ),
                 ),
+                SizedBox(height: media.width * 0.05),
+
+                Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        height: media.width * 0.95,
+                        padding: EdgeInsets.symmetric(horizontal: 20),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(25),
+                          boxShadow: const [
+                            BoxShadow(color: Colors.black12, blurRadius: 2),
+                          ],
+                        ),
+                        child: Row(
+                          children: [
+                            SimpleAnimationProgressBar(
+                              height: media.width * 0.9,
+                              width: media.width * 0.07,
+                              backgroundColor: Colors.grey.shade100,
+                              foregroundColor: Colors.purple,
+                              ratio: 0.5,
+                              direction: Axis.vertical,
+                              curve: Curves.fastLinearToSlowEaseIn,
+                              duration: const Duration(seconds: 3),
+                              borderRadius: BorderRadius.circular(15),
+                              gradientColor: LinearGradient(
+                                colors: Tcolor.primaryG,
+                                begin: Alignment.bottomCenter,
+                                end: Alignment.topCenter,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: media.width * 0.05),
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Container(
+                            height: media.width * 0.45,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(25),
+                              boxShadow: const [
+                                BoxShadow(color: Colors.black12, blurRadius: 2),
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: media.width * 0.05),
+                          Container(
+                            height: media.width * 0.45,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(25),
+                              boxShadow: const [
+                                BoxShadow(color: Colors.black12, blurRadius: 2),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: media.width * 0.1),
               ],
             ),
           ),
