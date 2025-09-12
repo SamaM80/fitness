@@ -1,3 +1,4 @@
+import 'package:dotted_dashed_line/dotted_dashed_line.dart';
 import 'package:fitness01/common/color_extension.dart';
 import 'package:fitness01/common_widget/round_button.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -47,6 +48,15 @@ class _HomeViewState extends State<HomeView> {
     FlSpot(29, 60),
     FlSpot(30, 40),
   ];
+
+  List waterArr = [
+    {"title": "6am - 8am", "subtitle": "600ml"},
+    {"title": "9am - 11am", "subtitle": "500ml"},
+    {"title": "11am - 2pm", "subtitle": "1000ml"},
+    {"title": "2pm - 4pm", "subtitle": "700ml"},
+    {"title": "4pm - now", "subtitle": "900ml"},
+  ];
+
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
@@ -412,7 +422,10 @@ class _HomeViewState extends State<HomeView> {
                     Expanded(
                       child: Container(
                         height: media.width * 0.95,
-                        padding: EdgeInsets.symmetric(horizontal: 20),
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 25,
+                          horizontal: 20,
+                        ),
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(25),
@@ -423,7 +436,7 @@ class _HomeViewState extends State<HomeView> {
                         child: Row(
                           children: [
                             SimpleAnimationProgressBar(
-                              height: media.width * 0.9,
+                              height: media.width * 0.85,
                               width: media.width * 0.07,
                               backgroundColor: Colors.grey.shade100,
                               foregroundColor: Colors.purple,
@@ -436,6 +449,139 @@ class _HomeViewState extends State<HomeView> {
                                 colors: Tcolor.primaryG,
                                 begin: Alignment.bottomCenter,
                                 end: Alignment.topCenter,
+                              ),
+                            ),
+
+                            const SizedBox(width: 10),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Water Intake",
+                                    style: TextStyle(
+                                      color: Tcolor.black,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                  ShaderMask(
+                                    blendMode: BlendMode.srcIn,
+                                    shaderCallback: (bounds) {
+                                      return LinearGradient(
+                                        colors: Tcolor.primaryG,
+                                        begin: Alignment.centerLeft,
+                                        end: Alignment.centerRight,
+                                      ).createShader(
+                                        Rect.fromLTRB(
+                                          0,
+                                          0,
+                                          bounds.width,
+                                          bounds.height,
+                                        ),
+                                      );
+                                    },
+                                    child: Text(
+                                      "4 Litres",
+                                      style: TextStyle(
+                                        color: Tcolor.white.withAlpha(125),
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(height: 10),
+                                  Text(
+                                    "Real time update",
+                                    style: TextStyle(
+                                      color: Tcolor.gray,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: waterArr.map((w0bj) {
+                                      var isLast = w0bj == waterArr.last;
+                                      return Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Container(
+                                                margin: EdgeInsets.symmetric(
+                                                  vertical: 4,
+                                                ),
+                                                width: 10,
+                                                height: 10,
+                                                decoration: BoxDecoration(
+                                                  color: Tcolor.secondaryColor2,
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
+                                                ),
+                                              ),
+                                              if (!isLast)
+                                                DottedDashedLine(
+                                                  height: media.width * 0.078,
+                                                  width: 0,
+                                                  dashColor: Tcolor
+                                                      .secondaryColor1
+                                                      .withAlpha(100),
+                                                  axis: Axis.vertical,
+                                                ),
+                                            ],
+                                          ),
+                                          const SizedBox(width: 10),
+                                          Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                w0bj["title"].toString(),
+                                                style: TextStyle(
+                                                  color: Tcolor.gray,
+                                                  fontSize: 10,
+                                                ),
+                                              ),
+                                              ShaderMask(
+                                                blendMode: BlendMode.srcIn,
+                                                shaderCallback: (bounds) {
+                                                  return LinearGradient(
+                                                    colors: Tcolor.secondaryG,
+                                                    begin: Alignment.centerLeft,
+                                                    end: Alignment.centerRight,
+                                                  ).createShader(
+                                                    Rect.fromLTRB(
+                                                      0,
+                                                      0,
+                                                      bounds.width,
+                                                      bounds.height,
+                                                    ),
+                                                  );
+                                                },
+                                                child: Text(
+                                                  w0bj["subtitle"].toString(),
+                                                  style: TextStyle(
+                                                    color: Tcolor.white
+                                                        .withAlpha(100),
+                                                    fontSize: 12,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      );
+                                    }).toList(),
+                                  ),
+                                ],
                               ),
                             ),
                           ],
