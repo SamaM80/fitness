@@ -4,6 +4,7 @@ import 'package:fitness01/common_widget/round_button.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_animation_progress_bar/simple_animation_progress_bar.dart';
+import 'package:simple_circular_progress_bar/simple_circular_progress_bar.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -520,7 +521,8 @@ class _HomeViewState extends State<HomeView> {
                                                 width: 10,
                                                 height: 10,
                                                 decoration: BoxDecoration(
-                                                  color: Tcolor.secondaryColor2,
+                                                  color: Tcolor.secondaryColor1
+                                                      .withAlpha(100),
                                                   borderRadius:
                                                       BorderRadius.circular(5),
                                                 ),
@@ -595,6 +597,11 @@ class _HomeViewState extends State<HomeView> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Container(
+                            width: double.maxFinite,
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 25,
+                              horizontal: 20,
+                            ),
                             height: media.width * 0.45,
                             decoration: BoxDecoration(
                               color: Colors.white,
@@ -603,15 +610,146 @@ class _HomeViewState extends State<HomeView> {
                                 BoxShadow(color: Colors.black12, blurRadius: 2),
                               ],
                             ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Sleep",
+                                  style: TextStyle(
+                                    color: Tcolor.black,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                                ShaderMask(
+                                  blendMode: BlendMode.srcIn,
+                                  shaderCallback: (bounds) {
+                                    return LinearGradient(
+                                      colors: Tcolor.primaryG,
+                                      begin: Alignment.centerLeft,
+                                      end: Alignment.centerRight,
+                                    ).createShader(
+                                      Rect.fromLTRB(
+                                        0,
+                                        0,
+                                        bounds.width,
+                                        bounds.height,
+                                      ),
+                                    );
+                                  },
+                                  child: Text(
+                                    "8h 20m",
+                                    style: TextStyle(
+                                      color: Tcolor.white.withAlpha(125),
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ),
+                                const Spacer(),
+                                Image.asset(
+                                  "assets/img/sleep_grap.png",
+                                  width: double.maxFinite,
+                                  fit: BoxFit.fitWidth,
+                                ),
+                              ],
+                            ),
                           ),
                           SizedBox(height: media.width * 0.05),
                           Container(
+                            width: double.maxFinite,
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 25,
+                              horizontal: 20,
+                            ),
                             height: media.width * 0.45,
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(25),
                               boxShadow: const [
                                 BoxShadow(color: Colors.black12, blurRadius: 2),
+                              ],
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Calories",
+                                  style: TextStyle(
+                                    color: Tcolor.black,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                                ShaderMask(
+                                  blendMode: BlendMode.srcIn,
+                                  shaderCallback: (bounds) {
+                                    return LinearGradient(
+                                      colors: Tcolor.primaryG,
+                                      begin: Alignment.centerLeft,
+                                      end: Alignment.centerRight,
+                                    ).createShader(
+                                      Rect.fromLTRB(
+                                        0,
+                                        0,
+                                        bounds.width,
+                                        bounds.height,
+                                      ),
+                                    );
+                                  },
+                                  child: Text(
+                                    "760 Kcal",
+                                    style: TextStyle(
+                                      color: Tcolor.white.withAlpha(125),
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ),
+                                const Spacer(),
+                                Container(
+                                  alignment: Alignment.center,
+                                  child: SizedBox(
+                                    width: media.width * 0.2,
+                                    height: media.width * 0.2,
+                                    child: Stack(
+                                      alignment: Alignment.center,
+                                      children: [
+                                        Container(
+                                          width: media.width * 0.15,
+                                          height: media.width * 0.15,
+                                          alignment: Alignment.center,
+                                          decoration: BoxDecoration(
+                                            gradient: LinearGradient(
+                                              colors: Tcolor.primaryG,
+                                            ),
+                                            borderRadius: BorderRadius.circular(
+                                              media.width * 0.075,
+                                            ),
+                                          ),
+                                          child: FittedBox(
+                                            child: Text(
+                                              "230 Kcal\nLeft",
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                color: Tcolor.white,
+                                                fontSize: 11,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        SimpleCircularProgressBar(
+                                          progressStrokeWidth: 10,
+                                          backStrokeWidth: 10,
+                                          progressColors: Tcolor.primaryG,
+                                          backColor: Colors.grey.shade100,
+                                          valueNotifier: ValueNotifier(50),
+                                          startAngle: -180,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
                               ],
                             ),
                           ),
