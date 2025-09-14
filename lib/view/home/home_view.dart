@@ -844,9 +844,26 @@ class _HomeViewState extends State<HomeView> {
                       ),
                       lineBarsData: lineBarsData1,
                       minY: 0,
-                      maxY: 130,
-                      titlesData: FlTitlesData(show: false),
-                      gridData: const FlGridData(show: false),
+                      maxY: 110,
+                      titlesData: FlTitlesData(
+                        show: true,
+                        leftTitles: AxisTitles(),
+                        topTitles: AxisTitles(),
+                        bottomTitles: AxisTitles(sideTitles: bottomTitles),
+                        rightTitles: AxisTitles(sideTitles: rightTitles),
+                      ),
+                      gridData: FlGridData(
+                        show: true,
+                        drawHorizontalLine: true,
+                        horizontalInterval: 25,
+                        drawVerticalLine: false,
+                        getDrawingHorizontalLine: (value) {
+                          return FlLine(
+                            color: Tcolor.gray.withAlpha(50),
+                            strokeWidth: 2,
+                          );
+                        },
+                      ),
                       borderData: FlBorderData(
                         show: true,
                         border: Border.all(color: Colors.transparent),
@@ -925,13 +942,13 @@ class _HomeViewState extends State<HomeView> {
     dotData: FlDotData(show: false),
     belowBarData: BarAreaData(show: false),
     spots: const [
-      FlSpot(1, 10),
-      FlSpot(2, 30),
-      FlSpot(3, 50),
-      FlSpot(4, 30),
-      FlSpot(5, 5),
-      FlSpot(6, 40),
-      FlSpot(7, 100),
+      FlSpot(1, 35),
+      FlSpot(2, 70),
+      FlSpot(3, 40),
+      FlSpot(4, 80),
+      FlSpot(5, 25),
+      FlSpot(6, 70),
+      FlSpot(7, 35),
     ],
   );
 
@@ -948,13 +965,89 @@ class _HomeViewState extends State<HomeView> {
     dotData: FlDotData(show: false),
     belowBarData: BarAreaData(show: false),
     spots: const [
-      FlSpot(1, 50),
-      FlSpot(2, 30),
-      FlSpot(3, 10),
+      FlSpot(1, 80),
+      FlSpot(2, 50),
+      FlSpot(3, 90),
       FlSpot(4, 40),
       FlSpot(5, 80),
-      FlSpot(6, 60),
-      FlSpot(7, 40),
+      FlSpot(6, 35),
+      FlSpot(7, 60),
     ],
   );
+
+  SideTitles get rightTitles => SideTitles(
+    getTitlesWidget: rightTitleWidgets,
+    showTitles: true,
+    interval: 20,
+    reservedSize: 40,
+  );
+
+  Widget rightTitleWidgets(double value, TitleMeta meta) {
+    const style = TextStyle(fontWeight: FontWeight.bold, fontSize: 14);
+    String text;
+    switch (value.toInt()) {
+      case 0:
+        text = '0%';
+        break;
+      case 20:
+        text = '20%';
+        break;
+      case 40:
+        text = '40%';
+        break;
+      case 60:
+        text = '60%';
+        break;
+      case 80:
+        text = '80%';
+        break;
+      case 100:
+        text = '100%';
+        break;
+      default:
+        return Container();
+    }
+
+    return Text(text, style: style, textAlign: TextAlign.center);
+  }
+
+  SideTitles get bottomTitles => SideTitles(
+    showTitles: true,
+    reservedSize: 32,
+    interval: 1,
+    getTitlesWidget: bottomTitleWidgets,
+  );
+
+  Widget bottomTitleWidgets(double value, TitleMeta meta) {
+    const style = TextStyle(fontWeight: FontWeight.bold, fontSize: 16);
+    Widget text;
+    switch (value.toInt()) {
+      case 1:
+        text = const Text('Sun', style: style);
+        break;
+      case 2:
+        text = const Text('Mon', style: style);
+        break;
+      case 3:
+        text = const Text('Tue', style: style);
+        break;
+      case 4:
+        text = const Text('Wen', style: style);
+        break;
+      case 5:
+        text = const Text('Thu', style: style);
+        break;
+      case 6:
+        text = const Text('Fri', style: style);
+        break;
+      case 7:
+        text = const Text('Sat', style: style);
+        break;
+      default:
+        text = const Text('');
+        break;
+    }
+
+    return SideTitleWidget(axisSide: meta.axisSide, space: 10, child: text);
+  }
 }
