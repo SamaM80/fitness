@@ -759,11 +759,57 @@ class _HomeViewState extends State<HomeView> {
                   ],
                 ),
                 SizedBox(height: media.width * 0.1),
-
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Workout Progress",
+                      style: TextStyle(
+                        color: Tcolor.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    Container(
+                      height: 30,
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(colors: Tcolor.primaryG),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: DropdownButtonHideUnderline(
+                        child: DropdownButton(
+                          items: ["Weekly", "Monthly"]
+                              .map(
+                                (name) => DropdownMenuItem(
+                                  value: name,
+                                  child: Text(
+                                    name,
+                                    style: TextStyle(
+                                      color: Tcolor.gray,
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ),
+                              )
+                              .toList(),
+                          onChanged: (value) {},
+                          icon: Icon(Icons.expand_more, color: Tcolor.white),
+                          hint: Text(
+                            "Weekly",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(color: Tcolor.white, fontSize: 12),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: media.width * 0.05),
                 Container(
-                  height: media.width * 0.4,
+                  padding: const EdgeInsets.only(left: 15),
+                  height: media.width * 0.5,
                   width: double.maxFinite,
-
                   child: LineChart(
                     LineChartData(
                       showingTooltipIndicators: showingTooltipOnSpots.map((
@@ -843,7 +889,7 @@ class _HomeViewState extends State<HomeView> {
                         ),
                       ),
                       lineBarsData: lineBarsData1,
-                      minY: 0,
+                      minY: -0.5,
                       maxY: 110,
                       titlesData: FlTitlesData(
                         show: true,
@@ -872,6 +918,151 @@ class _HomeViewState extends State<HomeView> {
                   ),
                 ),
 
+                SizedBox(height: media.width * 0.01),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Workout Progress",
+                      style: TextStyle(
+                        color: Tcolor.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    Container(
+                      height: 30,
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(colors: Tcolor.primaryG),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: DropdownButtonHideUnderline(
+                        child: DropdownButton(
+                          items: ["Weekly", "Monthly"]
+                              .map(
+                                (name) => DropdownMenuItem(
+                                  value: name,
+                                  child: Text(
+                                    name,
+                                    style: TextStyle(
+                                      color: Tcolor.gray,
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ),
+                              )
+                              .toList(),
+                          onChanged: (value) {},
+                          icon: Icon(Icons.expand_more, color: Tcolor.white),
+                          hint: Text(
+                            "Weekly",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(color: Tcolor.white, fontSize: 12),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: media.width * 0.1),
+
+                SizedBox(height: media.width * 0.01),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Latest Workout",
+                      style: TextStyle(
+                        color: Tcolor.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    Container(
+                      height: 30,
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(colors: Tcolor.primaryG),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: DropdownButtonHideUnderline(
+                        child: DropdownButton(
+                          items: ["Weekly", "Monthly"]
+                              .map(
+                                (name) => DropdownMenuItem(
+                                  value: name,
+                                  child: Text(
+                                    name,
+                                    style: TextStyle(
+                                      color: Tcolor.gray,
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ),
+                              )
+                              .toList(),
+                          onChanged: (value) {},
+                          icon: Icon(Icons.expand_more, color: Tcolor.white),
+                          hint: Text(
+                            "Weekly",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(color: Tcolor.white, fontSize: 12),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: media.width * 0.1),
+
+                SizedBox(height: media.width * 0.01),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Workout Progress",
+                      style: TextStyle(
+                        color: Tcolor.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    Container(
+                      height: 30,
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(colors: Tcolor.primaryG),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: DropdownButtonHideUnderline(
+                        child: DropdownButton(
+                          items: ["Weekly", "Monthly"]
+                              .map(
+                                (name) => DropdownMenuItem(
+                                  value: name,
+                                  child: Text(
+                                    name,
+                                    style: TextStyle(
+                                      color: Tcolor.gray,
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ),
+                              )
+                              .toList(),
+                          onChanged: (value) {},
+                          icon: Icon(Icons.expand_more, color: Tcolor.white),
+                          hint: Text(
+                            "Weekly",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(color: Tcolor.white, fontSize: 12),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
                 SizedBox(height: media.width * 0.1),
               ],
             ),
@@ -983,7 +1174,6 @@ class _HomeViewState extends State<HomeView> {
   );
 
   Widget rightTitleWidgets(double value, TitleMeta meta) {
-    const style = TextStyle(fontWeight: FontWeight.bold, fontSize: 14);
     String text;
     switch (value.toInt()) {
       case 0:
@@ -1008,7 +1198,11 @@ class _HomeViewState extends State<HomeView> {
         return Container();
     }
 
-    return Text(text, style: style, textAlign: TextAlign.center);
+    return Text(
+      text,
+      style: TextStyle(color: Tcolor.gray, fontSize: 12),
+      textAlign: TextAlign.center,
+    );
   }
 
   SideTitles get bottomTitles => SideTitles(
@@ -1019,32 +1213,32 @@ class _HomeViewState extends State<HomeView> {
   );
 
   Widget bottomTitleWidgets(double value, TitleMeta meta) {
-    const style = TextStyle(fontWeight: FontWeight.bold, fontSize: 16);
+    var style = TextStyle(color: Tcolor.gray, fontSize: 12);
     Widget text;
     switch (value.toInt()) {
       case 1:
-        text = const Text('Sun', style: style);
+        text = Text('Sun', style: style);
         break;
       case 2:
-        text = const Text('Mon', style: style);
+        text = Text('Mon', style: style);
         break;
       case 3:
-        text = const Text('Tue', style: style);
+        text = Text('Tue', style: style);
         break;
       case 4:
-        text = const Text('Wen', style: style);
+        text = Text('Wen', style: style);
         break;
       case 5:
-        text = const Text('Thu', style: style);
+        text = Text('Thu', style: style);
         break;
       case 6:
-        text = const Text('Fri', style: style);
+        text = Text('Fri', style: style);
         break;
       case 7:
-        text = const Text('Sat', style: style);
+        text = Text('Sat', style: style);
         break;
       default:
-        text = const Text('');
+        text = Text('');
         break;
     }
 
