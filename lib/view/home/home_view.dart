@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:simple_animation_progress_bar/simple_animation_progress_bar.dart';
 import 'package:simple_circular_progress_bar/simple_circular_progress_bar.dart';
 
+import 'notification_view.dart';
+
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
 
@@ -138,7 +140,14 @@ class _HomeViewState extends State<HomeView> {
                       ],
                     ),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const NotificationView(),
+                          ),
+                        );
+                      },
                       icon: Image.asset(
                         "assets/img/notification_active.png",
                         width: 25,
