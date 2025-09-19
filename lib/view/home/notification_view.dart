@@ -1,4 +1,5 @@
 import 'package:fitness01/common/color_extension.dart';
+import 'package:fitness01/common_widget/notification_row.dart';
 import 'package:flutter/material.dart';
 
 class NotificationView extends StatefulWidget {
@@ -91,8 +92,8 @@ class _NotificationViewState extends State<NotificationView> {
               ),
               child: Image.asset(
                 "assets/img/more_btn.png",
-                width: 15,
-                height: 15,
+                width: 12,
+                height: 12,
                 fit: BoxFit.contain,
               ),
             ),
@@ -104,44 +105,7 @@ class _NotificationViewState extends State<NotificationView> {
         padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
         itemBuilder: ((context, index) {
           var nObj = notificationArr[index] as Map? ?? {};
-          return Row(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(30),
-                child: Image.asset(
-                  nObj["image"].toString(),
-                  height: 40,
-                  width: 40,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              const SizedBox(width: 15),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      nObj["title"].toString(),
-                      style: TextStyle(color: Tcolor.black, fontSize: 12),
-                    ),
-                    Text(
-                      nObj["time"].toString(),
-                      style: TextStyle(color: Tcolor.black, fontSize: 10),
-                    ),
-                  ],
-                ),
-              ),
-              IconButton(
-                onPressed: () {},
-                icon: Image.asset(
-                  "assets/img/next_icon.png",
-                  height: 30,
-                  width: 30,
-                  fit: BoxFit.contain,
-                ),
-              ),
-            ],
-          );
+          return NotificationRow(nObj: nObj);
         }),
         separatorBuilder: (context, index) {
           return Divider(color: Tcolor.gray.withAlpha(50), height: 1);

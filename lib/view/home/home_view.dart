@@ -2,6 +2,7 @@ import 'package:dotted_dashed_line/dotted_dashed_line.dart';
 import 'package:fitness01/common/color_extension.dart';
 import 'package:fitness01/common_widget/round_button.dart';
 import 'package:fitness01/common_widget/workout_row.dart';
+import 'package:fitness01/view/home/activity_tracker_view.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_animation_progress_bar/simple_animation_progress_bar.dart';
@@ -269,7 +270,15 @@ class _HomeViewState extends State<HomeView> {
                           type: RoundButtonType.bgGradient,
                           fontsize: 12,
                           fontWeight: FontWeight.w400,
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const ActivityTrackerView(),
+                              ),
+                            );
+                          },
                         ),
                       ),
                     ],
@@ -535,8 +544,8 @@ class _HomeViewState extends State<HomeView> {
                                   Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
-                                    children: waterArr.map((w0bj) {
-                                      var isLast = w0bj == waterArr.last;
+                                    children: waterArr.map((wObj) {
+                                      var isLast = wObj == waterArr.last;
                                       return Row(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
@@ -579,7 +588,7 @@ class _HomeViewState extends State<HomeView> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Text(
-                                                w0bj["title"].toString(),
+                                                wObj["title"].toString(),
                                                 style: TextStyle(
                                                   color: Tcolor.gray,
                                                   fontSize: 10,
@@ -602,7 +611,7 @@ class _HomeViewState extends State<HomeView> {
                                                   );
                                                 },
                                                 child: Text(
-                                                  w0bj["subtitle"].toString(),
+                                                  wObj["subtitle"].toString(),
                                                   style: TextStyle(
                                                     color: Tcolor.white
                                                         .withAlpha(100),
@@ -982,8 +991,8 @@ class _HomeViewState extends State<HomeView> {
                   shrinkWrap: true,
                   itemCount: lastWorkoutArr.length,
                   itemBuilder: (context, index) {
-                    var w0bj = lastWorkoutArr[index] as Map? ?? {};
-                    return WorkoutRow(w0bj: w0bj);
+                    var wObj = lastWorkoutArr[index] as Map? ?? {};
+                    return WorkoutRow(wObj: wObj);
                   },
                 ),
 

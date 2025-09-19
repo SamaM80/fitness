@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:simple_animation_progress_bar/simple_animation_progress_bar.dart';
 
 class WorkoutRow extends StatelessWidget {
-  final Map w0bj;
-  const WorkoutRow({super.key, required this.w0bj});
+  final Map wObj;
+  const WorkoutRow({super.key, required this.wObj});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class WorkoutRow extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(30),
             child: Image.asset(
-              w0bj["image"].toString(),
+              wObj["image"].toString(),
               width: 60,
               height: 60,
               fit: BoxFit.cover,
@@ -34,11 +34,11 @@ class WorkoutRow extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  w0bj["name"].toString(),
+                  wObj["name"].toString(),
                   style: TextStyle(color: Tcolor.black, fontSize: 12),
                 ),
                 Text(
-                  "${w0bj["kcal"].toString()} Calories Burn | ${w0bj["time"].toString()} minutes",
+                  "${wObj["kcal"].toString()} Calories Burn | ${wObj["time"].toString()} minutes",
                   style: TextStyle(
                     color: Tcolor.gray,
                     fontSize: 10,
@@ -51,7 +51,7 @@ class WorkoutRow extends StatelessWidget {
                   width: media.width * 0.5,
                   backgroundColor: Colors.grey.shade100,
                   foregroundColor: Colors.purple,
-                  ratio: w0bj["progress"] as double? ?? 0.0,
+                  ratio: wObj["progress"] as double? ?? 0.0,
                   direction: Axis.horizontal,
                   curve: Curves.fastLinearToSlowEaseIn,
                   duration: const Duration(seconds: 3),
