@@ -16,6 +16,7 @@ class TodayTargetCall extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 70,
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         color: Tcolor.white,
@@ -23,10 +24,11 @@ class TodayTargetCall extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Image.asset(icon, width: 40),
+          Image.asset(icon, width: 40, height: 40, fit: BoxFit.contain),
           const SizedBox(width: 8),
           Expanded(
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ShaderMask(

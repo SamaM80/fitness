@@ -1,6 +1,7 @@
 import 'package:fitness01/common/color_extension.dart';
 import 'package:flutter/material.dart';
 
+import '../../common_widget/latest_activity_row.dart';
 import '../../common_widget/round_button.dart';
 import '../../common_widget/today_target_call.dart';
 
@@ -12,40 +13,21 @@ class ActivityTrackerView extends StatefulWidget {
 }
 
 class _ActivityTrackerViewState extends State<ActivityTrackerView> {
-  List notificationArr = [
+  List latestArr = [
     {
-      "image": "assets/img/Workout1.png",
-      "title": "Hey, it’s time for lunch",
+      "image": "assets/img/pic_4.png",
+      "title": "Drinking 300ml Water",
       "time": "About 1 minutes ago",
     },
     {
-      "image": "assets/img/Workout2.png",
-      "title": "Don’t miss your lowerbody workout",
+      "image": "assets/img/pic_5.png",
+      "title": "Eat Snack (Fitbar)",
       "time": "About 3 hours ago",
-    },
-    {
-      "image": "assets/img/Workout3.png",
-      "title": "Hey, let’s add some meals for your b",
-      "time": "About 3 hours ago",
-    },
-    {
-      "image": "assets/img/Workout1.png",
-      "title": "Congratulations, You have finished A..",
-      "time": "29 May",
-    },
-    {
-      "image": "assets/img/Workout2.png",
-      "title": "Hey, it’s time for lunch",
-      "time": "8 April",
-    },
-    {
-      "image": "assets/img/Workout3.png",
-      "title": "Ups, You have missed your Lowerbo...",
-      "time": "8 April",
     },
   ];
   @override
   Widget build(BuildContext context) {
+    var media = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Tcolor.white,
@@ -187,6 +169,100 @@ class _ActivityTrackerViewState extends State<ActivityTrackerView> {
                   ],
                 ),
               ),
+
+              SizedBox(height: media.width * 0.1),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Activity Progress",
+                    style: TextStyle(
+                      color: Tcolor.black,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  Container(
+                    height: 30,
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(colors: Tcolor.primaryG),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton(
+                        items: ["Weekly", "Monthly"]
+                            .map(
+                              (name) => DropdownMenuItem(
+                                value: name,
+                                child: Text(
+                                  name,
+                                  style: TextStyle(
+                                    color: Tcolor.gray,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ),
+                            )
+                            .toList(),
+                        onChanged: (value) {},
+                        icon: Icon(Icons.expand_more, color: Tcolor.white),
+                        hint: Text(
+                          "Weekly",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Tcolor.white, fontSize: 12),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Container(
+                height: 30,
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                decoration: BoxDecoration(
+                  color: Tcolor.white,
+                  borderRadius: BorderRadius.circular(15),
+                ),
+              ),
+
+              SizedBox(height: media.width * 0.05),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Latest Workout",
+                    style: TextStyle(
+                      color: Tcolor.black,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "See more",
+                      style: TextStyle(
+                        color: Tcolor.gray,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              ListView.builder(
+                padding: EdgeInsets.zero,
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: latestArr.length,
+                itemBuilder: (context, index) {
+                  var wObj = latestArr[index] as Map? ?? {};
+                  return LatestActivityRow(wObj: wObj);
+                },
+              ),
+
+              SizedBox(height: media.width * 0.1),
             ],
           ),
         ),
