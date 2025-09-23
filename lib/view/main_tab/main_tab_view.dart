@@ -4,6 +4,8 @@ import 'package:fitness01/view/home/blank_view.dart';
 import 'package:fitness01/view/home/home_view.dart';
 import 'package:flutter/material.dart';
 
+import '../profile/profile_view.dart';
+
 class MainTabView extends StatefulWidget {
   const MainTabView({super.key});
 
@@ -97,7 +99,7 @@ class _MainTabViewState extends State<MainTabView> {
                   isActive: selectTab == 3,
                   onTap: () {
                     selectTab = 3;
-                    curentTab = const BlankView();
+                    curentTab = const ProfileView();
                     if (mounted) {
                       setState(() {});
                     }

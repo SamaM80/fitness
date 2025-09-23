@@ -1,6 +1,6 @@
 import 'package:fitness01/common/color_extension.dart';
 import 'package:flutter/material.dart';
-import 'package:simple_animation_progress_bar/simple_animation_progress_bar.dart';
+//import 'package:simple_animation_progress_bar/simple_animation_progress_bar.dart';
 
 class LatestActivityRow extends StatelessWidget {
   final Map wObj;
@@ -8,7 +8,7 @@ class LatestActivityRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var media = MediaQuery.of(context).size;
+    //var media = MediaQuery.of(context).size;
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 8),
       child: Row(

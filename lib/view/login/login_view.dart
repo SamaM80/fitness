@@ -2,7 +2,7 @@ import 'package:fitness01/common/color_extension.dart';
 import 'package:fitness01/common_widget/round_button.dart';
 import 'package:fitness01/common_widget/round_textfield.dart';
 import 'package:fitness01/view/login/complete_profil.dart';
-import 'package:fitness01/view/login/singup_view.dart';
+//import 'package:fitness01/view/login/singup_view.dart';
 import 'package:flutter/material.dart';
 
 class LoginView extends StatefulWidget {
