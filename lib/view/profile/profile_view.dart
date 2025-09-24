@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../common/color_extension.dart';
+import '../../common_widget/round_button.dart';
+import '../../common_widget/title_subtitle_cell.dart';
 
 class ProfileView extends StatefulWidget {
   const ProfileView({super.key});
@@ -51,7 +53,7 @@ class _ProfileViewState extends State<ProfileView> {
       backgroundColor: Tcolor.white,
       body: SingleChildScrollView(
         child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 25),
+          padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -61,10 +63,69 @@ class _ProfileViewState extends State<ProfileView> {
                     borderRadius: BorderRadius.circular(30),
                     child: Image.asset(
                       "assets/img/u2.png",
-                      width: 60,
-                      height: 60,
+                      width: 50,
+                      height: 50,
                       fit: BoxFit.cover,
                     ),
+                  ),
+                  const SizedBox(width: 15),
+
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Sama Mirzaee",
+                          style: TextStyle(
+                            color: Tcolor.black,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        Text(
+                          "Lose a Fat Program",
+                          style: TextStyle(color: Tcolor.gray, fontSize: 12),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    width: 90,
+                    height: 25,
+                    child: RoundButton(
+                      title: "Edit",
+                      type: RoundButtonType.bgGradient,
+                      fontsize: 12,
+                      fontWeight: FontWeight.w400,
+                      onPressed: () {
+                        /*Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const ActivityTrackerView(),
+                              ),
+                            );*/
+                      },
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 15),
+              const Row(
+                children: [
+                  Expanded(
+                    child: TitleSubtitleCell(
+                      title: "170cm",
+                      subtitle: "Height",
+                    ),
+                  ),
+                  SizedBox(width: 15),
+                  Expanded(
+                    child: TitleSubtitleCell(title: "65kg", subtitle: "Weight"),
+                  ),
+                  SizedBox(width: 15),
+                  Expanded(
+                    child: TitleSubtitleCell(title: "24yo", subtitle: "Age"),
                   ),
                 ],
               ),
