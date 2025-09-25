@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../common/color_extension.dart';
 import '../../common_widget/round_button.dart';
+import '../../common_widget/setting_row.dart';
 import '../../common_widget/title_subtitle_cell.dart';
 
 class ProfileView extends StatefulWidget {
@@ -12,6 +13,26 @@ class ProfileView extends StatefulWidget {
 }
 
 class _ProfileViewState extends State<ProfileView> {
+  List accountArr = [
+    {"image": "assets/img/p_personal.png", "name": "Personal Data", "tag": "1"},
+    {"image": "assets/img/p_achi.png", "name": "Achievement", "tag": "2"},
+    {
+      "image": "assets/img/p_activity.png",
+      "name": "Activity History",
+      "tag": "3",
+    },
+    {
+      "image": "assets/img/p_workout.png",
+      "name": "Workout Progress",
+      "tag": "4",
+    },
+  ];
+
+  List otherArr = [
+    {"image": "assets/img/p_contact.png", "name": "Contact Us", "tag": "5"},
+    {"image": "assets/img/p_privacy.png", "name": "Privacy Policy", "tag": "6"},
+    {"image": "assets/img/p_setting.png", "name": "Setting", "tag": "7"},
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -128,6 +149,138 @@ class _ProfileViewState extends State<ProfileView> {
                     child: TitleSubtitleCell(title: "24yo", subtitle: "Age"),
                   ),
                 ],
+              ),
+              const SizedBox(height: 25),
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 10,
+                  horizontal: 15,
+                ),
+                decoration: BoxDecoration(
+                  color: Tcolor.white,
+                  borderRadius: BorderRadius.circular(15),
+                  boxShadow: const [
+                    BoxShadow(color: Colors.black12, blurRadius: 2),
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Account",
+                      style: TextStyle(
+                        color: Tcolor.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: accountArr.length,
+                      itemBuilder: (context, index) {
+                        var iObj = accountArr[index] as Map? ?? {};
+                        return SettingRow(
+                          icon: iObj["image"].toString(),
+                          title: iObj["name"].toString(),
+                          onPressed: () {},
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 25),
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 10,
+                  horizontal: 15,
+                ),
+                decoration: BoxDecoration(
+                  color: Tcolor.white,
+                  borderRadius: BorderRadius.circular(15),
+                  boxShadow: const [
+                    BoxShadow(color: Colors.black12, blurRadius: 2),
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Notification",
+                      style: TextStyle(
+                        color: Tcolor.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 8),
+              SizedBox(
+                height: 35,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      "assets/img/p_notification.png",
+                      height: 15,
+                      width: 15,
+                      fit: BoxFit.contain,
+                    ),
+                    const SizedBox(width: 15),
+                    Expanded(
+                      child: Text(
+                        "Pop-up Notification",
+                        style: TextStyle(color: Tcolor.black, fontSize: 12),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 10,
+                  horizontal: 15,
+                ),
+                decoration: BoxDecoration(
+                  color: Tcolor.white,
+                  borderRadius: BorderRadius.circular(15),
+                  boxShadow: const [
+                    BoxShadow(color: Colors.black12, blurRadius: 2),
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Other",
+                      style: TextStyle(
+                        color: Tcolor.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+
+                    ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      padding: EdgeInsets.zero,
+                      shrinkWrap: true,
+                      itemCount: accountArr.length,
+                      itemBuilder: (context, index) {
+                        var iObj = accountArr[index] as Map? ?? {};
+                        return SettingRow(
+                          icon: iObj["image"].toString(),
+                          title: iObj["name"].toString(),
+                          onPressed: () {},
+                        );
+                      },
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
