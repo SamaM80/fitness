@@ -1,6 +1,7 @@
 import 'package:fitness01/common/color_extension.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import '../../common_widget/latest_activity_row.dart';
 import '../../common_widget/today_target_call.dart';
 
 class ActivityTrackerView extends StatefulWidget {
@@ -216,7 +217,6 @@ class _ActivityTrackerViewState extends State<ActivityTrackerView> {
                   ),
                 ],
               ),
-
               SizedBox(height: media.width * 0.05),
               Container(
                 height: media.width * 0.5,
@@ -322,6 +322,41 @@ class _ActivityTrackerViewState extends State<ActivityTrackerView> {
                     gridData: const FlGridData(show: false),
                   ),
                 ),
+              ),
+              SizedBox(height: media.width * 0.05),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Latest Workout",
+                    style: TextStyle(
+                      color: Tcolor.black,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "See More",
+                      style: TextStyle(
+                        color: Tcolor.gray,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              ListView.builder(
+                padding: EdgeInsets.zero,
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: latestArr.length,
+                itemBuilder: (context, index) {
+                  var wObj = latestArr[index] as Map? ?? {};
+                  return LatestActivityRow(wObj: wObj);
+                },
               ),
 
               SizedBox(height: media.width * 0.1),

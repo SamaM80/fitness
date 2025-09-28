@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:simple_animation_progress_bar/simple_animation_progress_bar.dart';
 import 'package:simple_circular_progress_bar/simple_circular_progress_bar.dart';
 
+import 'finished_workout_view.dart';
 import 'notification_view.dart';
 
 class HomeView extends StatefulWidget {
@@ -805,7 +806,7 @@ class _HomeViewState extends State<HomeView> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Workout Progress",
+                      "Activity Progress",
                       style: TextStyle(
                         color: Tcolor.black,
                         fontSize: 16,
@@ -992,7 +993,17 @@ class _HomeViewState extends State<HomeView> {
                   itemCount: lastWorkoutArr.length,
                   itemBuilder: (context, index) {
                     var wObj = lastWorkoutArr[index] as Map? ?? {};
-                    return WorkoutRow(wObj: wObj);
+                    return InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const FinishedWorkoutView(),
+                          ),
+                        );
+                      },
+                      child: WorkoutRow(wObj: wObj),
+                    );
                   },
                 ),
 

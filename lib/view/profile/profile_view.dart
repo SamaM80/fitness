@@ -4,6 +4,7 @@ import '../../common/color_extension.dart';
 import '../../common_widget/round_button.dart';
 import '../../common_widget/setting_row.dart';
 import '../../common_widget/title_subtitle_cell.dart';
+import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 
 class ProfileView extends StatefulWidget {
   const ProfileView({super.key});
@@ -13,6 +14,8 @@ class ProfileView extends StatefulWidget {
 }
 
 class _ProfileViewState extends State<ProfileView> {
+  bool positive = false;
+
   List accountArr = [
     {"image": "assets/img/p_personal.png", "name": "Personal Data", "tag": "1"},
     {"image": "assets/img/p_achi.png", "name": "Achievement", "tag": "2"},
@@ -53,7 +56,7 @@ class _ProfileViewState extends State<ProfileView> {
           InkWell(
             onTap: () {},
             child: Container(
-              padding: const EdgeInsets.all(8),
+              margin: const EdgeInsets.all(8),
               height: 40,
               width: 40,
               alignment: Alignment.center,
@@ -76,7 +79,7 @@ class _ProfileViewState extends State<ProfileView> {
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Row(
                 children: [
@@ -90,13 +93,12 @@ class _ProfileViewState extends State<ProfileView> {
                     ),
                   ),
                   const SizedBox(width: 15),
-
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Sama Mirzaee",
+                          "Stefani Wong",
                           style: TextStyle(
                             color: Tcolor.black,
                             fontSize: 14,
@@ -111,7 +113,7 @@ class _ProfileViewState extends State<ProfileView> {
                     ),
                   ),
                   SizedBox(
-                    width: 90,
+                    width: 70,
                     height: 25,
                     child: RoundButton(
                       title: "Edit",
@@ -119,13 +121,12 @@ class _ProfileViewState extends State<ProfileView> {
                       fontsize: 12,
                       fontWeight: FontWeight.w400,
                       onPressed: () {
-                        /*Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    const ActivityTrackerView(),
-                              ),
-                            );*/
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) => const ActivityTrackerView(),
+                        //   ),
+                        // );
                       },
                     ),
                   ),
@@ -136,7 +137,7 @@ class _ProfileViewState extends State<ProfileView> {
                 children: [
                   Expanded(
                     child: TitleSubtitleCell(
-                      title: "170cm",
+                      title: "180cm",
                       subtitle: "Height",
                     ),
                   ),
@@ -146,7 +147,7 @@ class _ProfileViewState extends State<ProfileView> {
                   ),
                   SizedBox(width: 15),
                   Expanded(
-                    child: TitleSubtitleCell(title: "24yo", subtitle: "Age"),
+                    child: TitleSubtitleCell(title: "22yo", subtitle: "Age"),
                   ),
                 ],
               ),
@@ -215,31 +216,100 @@ class _ProfileViewState extends State<ProfileView> {
                         fontWeight: FontWeight.w700,
                       ),
                     ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 8),
-              SizedBox(
-                height: 35,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      "assets/img/p_notification.png",
-                      height: 15,
-                      width: 15,
-                      fit: BoxFit.contain,
-                    ),
-                    const SizedBox(width: 15),
-                    Expanded(
-                      child: Text(
-                        "Pop-up Notification",
-                        style: TextStyle(color: Tcolor.black, fontSize: 12),
+                    const SizedBox(height: 8),
+                    SizedBox(
+                      height: 30,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            "assets/img/p_notification.png",
+                            height: 15,
+                            width: 15,
+                            fit: BoxFit.contain,
+                          ),
+                          const SizedBox(width: 15),
+                          Expanded(
+                            child: Text(
+                              "Pop-up Notification",
+                              style: TextStyle(
+                                color: Tcolor.black,
+                                fontSize: 12,
+                              ),
+                            ),
+                          ),
+                          CustomAnimatedToggleSwitch<bool>(
+                            current: positive,
+                            values: [false, true],
+                            spacing: 0.0,
+                            indicatorSize: Size.square(30.0),
+                            animationDuration: const Duration(
+                              milliseconds: 200,
+                            ),
+                            animationCurve: Curves.linear,
+                            onChanged: (b) => setState(() => positive = b),
+                            iconBuilder: (context, local, global) {
+                              return const SizedBox();
+                            },
+                            cursors: const ToggleCursors(
+                              defaultCursor: SystemMouseCursors.click,
+                            ),
+
+                            onTap: (_) => setState(() => positive = !positive),
+                            iconsTappable: false,
+                            wrapperBuilder: (context, global, child) {
+                              return Stack(
+                                alignment: Alignment.center,
+                                children: [
+                                  Positioned(
+                                    left: 10.0,
+                                    right: 10.0,
+
+                                    height: 30.0,
+                                    child: DecoratedBox(
+                                      decoration: BoxDecoration(
+                                        gradient: LinearGradient(
+                                          colors: Tcolor.secondaryG,
+                                        ),
+                                        borderRadius: const BorderRadius.all(
+                                          Radius.circular(50.0),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  child,
+                                ],
+                              );
+                            },
+                            foregroundIndicatorBuilder: (context, global) {
+                              return SizedBox.fromSize(
+                                size: const Size(10, 10),
+                                child: DecoratedBox(
+                                  decoration: BoxDecoration(
+                                    color: Tcolor.white,
+                                    borderRadius: const BorderRadius.all(
+                                      Radius.circular(50.0),
+                                    ),
+                                    boxShadow: const [
+                                      BoxShadow(
+                                        color: Colors.black38,
+                                        spreadRadius: 0.05,
+                                        blurRadius: 1.1,
+                                        offset: Offset(0.0, 0.8),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        ],
                       ),
                     ),
                   ],
                 ),
               ),
+              const SizedBox(height: 25),
               Container(
                 padding: const EdgeInsets.symmetric(
                   vertical: 10,
@@ -264,14 +334,13 @@ class _ProfileViewState extends State<ProfileView> {
                       ),
                     ),
                     const SizedBox(height: 8),
-
                     ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),
                       padding: EdgeInsets.zero,
                       shrinkWrap: true,
-                      itemCount: accountArr.length,
+                      itemCount: otherArr.length,
                       itemBuilder: (context, index) {
-                        var iObj = accountArr[index] as Map? ?? {};
+                        var iObj = otherArr[index] as Map? ?? {};
                         return SettingRow(
                           icon: iObj["image"].toString(),
                           title: iObj["name"].toString(),
