@@ -5,6 +5,7 @@ import 'package:fitness01/view/home/home_view.dart';
 import 'package:flutter/material.dart';
 
 import '../profile/profile_view.dart';
+import '../workout_traker/workout_traker_view.dart';
 
 class MainTabView extends StatefulWidget {
   const MainTabView({super.key});
@@ -74,7 +75,7 @@ class _MainTabViewState extends State<MainTabView> {
                   isActive: selectTab == 1,
                   onTap: () {
                     selectTab = 1;
-                    curentTab = const BlankView();
+                    curentTab = const WorkoutTrakerView();
                     if (mounted) {
                       setState(() {});
                     }
