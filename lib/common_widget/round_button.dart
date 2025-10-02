@@ -8,12 +8,15 @@ class RoundButton extends StatelessWidget {
   final RoundButtonType type;
   final VoidCallback onPressed;
   final double fontsize;
+  final double elevation;
   final FontWeight fontWeight;
+
   const RoundButton({
     super.key,
     required this.title,
     this.type = RoundButtonType.bgGradient,
     this.fontsize = 16,
+    this.elevation = 1,
     this.fontWeight = FontWeight.w700,
     required this.onPressed,
   });
@@ -50,7 +53,7 @@ class RoundButton extends StatelessWidget {
             type == RoundButtonType.bgGradient ||
                 type == RoundButtonType.bgSGradient
             ? 0
-            : 1,
+            : elevation,
         color:
             type == RoundButtonType.bgGradient ||
                 type == RoundButtonType.bgSGradient

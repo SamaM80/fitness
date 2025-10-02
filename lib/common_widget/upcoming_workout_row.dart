@@ -16,7 +16,6 @@ class _UpcomingWorkoutRowState extends State<UpcomingWorkoutRow> {
 
   @override
   Widget build(BuildContext context) {
-    //var media = MediaQuery.of(context).size;
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 8),
       padding: const EdgeInsets.all(10),

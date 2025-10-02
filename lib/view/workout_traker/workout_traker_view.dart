@@ -1,4 +1,5 @@
 import 'package:fitness01/common/color_extension.dart';
+import 'package:fitness01/common_widget/what_train_row.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
@@ -346,10 +347,10 @@ class _WorkoutTrakerViewState extends State<WorkoutTrakerView> {
                     padding: EdgeInsets.zero,
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
-                    itemCount: latestArr.length,
+                    itemCount: whatArr.length,
                     itemBuilder: (context, index) {
-                      var wObj = latestArr[index] as Map? ?? {};
-                      return UpcomingWorkoutRow(wObj: wObj);
+                      var wObj = whatArr[index] as Map? ?? {};
+                      return WhatTrainRow(wObj: wObj);
                     },
                   ),
 
